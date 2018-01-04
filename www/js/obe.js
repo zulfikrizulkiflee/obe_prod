@@ -211,3 +211,6 @@ $('#show-product-only').on('click', function () {
     $('.marketing-list').hide();
     $('.product-list').show();
 });
+$('.reload-page').on('click',function(){
+    location.reload();
+});
