@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "562173318365",
+    "firebase_url": "https://obe-prod.firebaseio.com",
+    "project_id": "obe-prod",
+    "storage_bucket": "obe-prod.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:562173318365:android:7593e11a617e722b",
+        "android_client_info": {
+          "package_name": "com.obe.apps"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "562173318365-mcj53posbsmd3i30cmptcindv7g6o2jt.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBnFll0r51m-QRQ8xnHAcqN2bzukMZ3q6w"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

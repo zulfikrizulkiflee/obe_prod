@@ -1,0 +1,50 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="com.obe.apps" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <feature name="Whitelist">
+        <param name="android-package" value="org.apache.cordova.whitelist.WhitelistPlugin" />
+        <param name="onload" value="true" />
+    </feature>
+    <feature name="Camera">
+        <param name="android-package" value="org.apache.cordova.camera.CameraLauncher" />
+    </feature>
+    <feature name="Toast">
+        <param name="android-package" value="nl.xservices.plugins.Toast" />
+    </feature>
+    <feature name="StatusBar">
+        <param name="android-package" value="org.apache.cordova.statusbar.StatusBar" />
+        <param name="onload" value="true" />
+    </feature>
+    <feature name="File">
+        <param name="android-package" value="org.apache.cordova.file.FileUtils" />
+        <param name="onload" value="true" />
+    </feature>
+    <allow-navigation href="cdvfile:*" />
+    <feature name="FileTransfer">
+        <param name="android-package" value="org.apache.cordova.filetransfer.FileTransfer" />
+    </feature>
+    <feature name="FCMPlugin">
+        <param name="android-package" value="com.gae.scaffolder.plugin.FCMPlugin" />
+        <param name="onload" value="true" />
+    </feature>
+    <feature name="Keyboard">
+        <param name="android-package" onload="true" value="org.apache.cordova.labs.keyboard.Keyboard" />
+    </feature>
+    <name>obe</name>
+    <description>
+        A sample Apache Cordova application that responds to the deviceready event.
+    </description>
+    <author email="dev@cordova.apache.org" href="http://cordova.io">
+        Apache Cordova Team
+    </author>
+    <content src="index.html" />
+    <access origin="*" />
+    <allow-intent href="http://*/*" />
+    <allow-intent href="https://*/*" />
+    <allow-intent href="tel:*" />
+    <allow-intent href="sms:*" />
+    <allow-intent href="mailto:*" />
+    <allow-intent href="geo:*" />
+    <allow-intent href="market:*" />
+    <icon density="xhdpi" height="57" src="res/icon/android/obe(96px).png" width="57" />
+    <preference name="loglevel" value="DEBUG" />
+</widget>
