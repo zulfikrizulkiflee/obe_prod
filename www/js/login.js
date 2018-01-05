@@ -13,8 +13,21 @@ $(function () {
                     $('.profile-img').attr('src', "http://www.zfikri.tk/obe_api/upload/" + response[0].user_img);
                     $('.preview-img').attr('src', "http://www.zfikri.tk/obe_api/upload/" + response[0].user_img);
                 }
-                $('.account-status').html(response[0].status);
-                $('.account-expired').html(response[0].end_date);
+                var acstatus = "New";
+                if(response[0].status != null){
+                    acstatus = response[0].status;
+                }
+                
+                var account_date = "Unavailable";
+                if(response[0].end_date != null){
+                    account_date = response[0].end_date.split(" ");
+                    account_date = account_date[0].split("-");
+                    account_date = account_date[2]+"/"+account_date[1]+"/"+account_date[0];
+                }
+                
+                
+                $('.account-status').html(acstatus);
+                $('.account-expired').html(account_date);
                 $('.profile-callsign').html(response[0].user_callsign);
                 $('#edit-profile input[name=user_name]').attr('value',response[0].user_name);
                 $('#edit-profile input[name=user_phone]').attr('value',response[0].user_phone);

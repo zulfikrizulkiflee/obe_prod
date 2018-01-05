@@ -169,6 +169,8 @@ function receiptonSuccess(imageURI) {
         var ft = new FileTransfer();
         ft.upload(imageURI, "http://www.zfikri.tk/obe_api/upload-receipt.php?obe_id=" + localStorage.getItem('obe_sessionID'), function (result) {
             $("#preloader").delay(1000).fadeOut("slow").hide();
+            localStorage.setItem("obe_paymentMade","true");
+            $('#upload-receipt').hide();
             alert("Payment accepted, please wait for our validation.\nThank you.");
             //                alert('successfully uploaded ' + result.response);
         }, function (e) {
@@ -202,6 +204,13 @@ if (localStorage.getItem("obe_sessionROLE") == "Agent") {
     $('[data-user=agent-new]').show();
     $('[data-user=super]').hide();
 }
+
+if (localStorage.getItem("obe_paymentMade") == "true") {
+    $('#upload-receipt').hide();
+}else{
+    $('#upload-receipt').show();
+}
+
 $('.marketing-list').hide();
 $('#show-marketing-only').on('click', function () {
     $('.marketing-list').show();
