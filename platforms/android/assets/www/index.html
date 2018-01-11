@@ -14,6 +14,7 @@
     <script type="text/javascript" src="js/Chart.js"></script>
     <script type="text/javascript" src="js/jquery.easing.js"></script>
     <script type="text/javascript" src="js/jquery.ulslide.js"></script>
+    <script type="text/javascript" src="js/jquery.ulslide.js"></script>
     <!--    <script type="text/javascript" src="js/jquery-ui.min.js"></script>-->
     <!----Calender -------->
     <link rel="stylesheet" href="css/clndr.css" type="text/css" />
@@ -99,11 +100,12 @@
         <div class="wrap">
             <div class="column_middle_grid1">
                 <div class="profile_picture">
-                    <a href="#update-image" style="width: 140px;border-radius: 50%;margin: auto;"><img class="profile-img" src="images/man.png" alt="" style="width:130px;height:130px"> </a>
+                    <a href="#update-image" style="width: 150px;border-radius: 50%;margin: auto;position: relative"><label class="account-role" style="display: table;background:#50597B; position: absolute;bottom:-15px;left:50%;transform:translateX(-50%);border-radius: 1em;padding: 3px 15px;color: #fff;"></label><img class="profile-img" src="images/man.png" alt="" style="width:130px;height:130px"> </a>
                     <div class="profile_picture_name">
                         <h2 class="profile-name"></h2>
                         <p class="profile-callsign"></p>
-                    </div> <span><a href="#setting"> <img src="images/settings.png" alt=""> </a></span> </div>
+                    </div> 
+                    <span><a href="#setting"> <img src="images/settings.png" alt=""> </a></span> </div>
                 <div class="articles_list">
                     <ul>
                         <li>
@@ -121,7 +123,12 @@
                         <div class="clear"></div>
                     </ul>
                 </div>
-                <span style="position: absolute; left: 23px;top: 23px;"><a href="#" class="reload-page"> <img src="images/reload.png" alt="" style="width: 32px;height: 32px;"> </a></span>
+<!--                <span style="position: absolute; left: 23px;top: 23px;"><a href="#" class="reload-page"> <img src="images/notification.png" alt="" style="width: 32px;height: 32px;"> </a></span>-->
+            </div>
+            <div class="column_middle expired-stockist" data-user="stockist">
+                <div class="sign_in" style="position: relative;">
+                    <a href="#renew-subs">
+                        <input type="button" value="Click Here to Renew Subscription" style="width:100%;background: #e64c65;"> </a> </div>
             </div>
             <div class="column_middle" data-user="agent-new">
                 <div class="sign_in" style="position: relative">
@@ -213,7 +220,7 @@
             <div class="column_right_grid sign-in" style="margin-top:0">
                 <div class="sign_in">
                     <h3>Upload Image</h3>
-                    <div class="profile_picture" style="padding-bottom: 1em;">
+                    <div class="profile_picture" style="padding-bottom: 1em;box-shadow: none;">
                         <a><img class="preview-img" src="images/man.png" alt="" style="width:150px;height:150px"></a>
                     </div>
                     <div style="display: flex;justify-content: space-around;padding-bottom: 1em;width: 80%;margin: auto;">
@@ -239,7 +246,7 @@
             <div class="column_right_grid sign-in" style="margin-top:0">
                 <div class="sign_in">
                     <h3>Update Image</h3>
-                    <div class="profile_picture" style="padding-bottom: 1em;">
+                    <div class="profile_picture" style="padding-bottom: 1em;box-shadow: none;">
                         <a><img class="preview-img" src="images/man.png" alt="" style="width:150px;height:150px"></a>
                     </div>
                     <div style="display: flex;justify-content: space-around;padding-bottom: 1em;width: 80%;margin: auto;">
@@ -426,8 +433,7 @@
                     <h3 style="position: relative;background: #ec3d68;"><span style="position: absolute; padding: 15px; left: 0; top:0;"><a href="#profile"> <img src="images/arrow-left.png" alt=""> </a></span>Incoming Orders</h3>
                     <div class="temp_list">
                         <ul class="incoming-order">
-                            <li><a href="#order-detail"><span class="day_name">29/06/17</span>&nbsp; 10.45am 
-                                <label class="digits"> agent_a </label><div class="clear"></div></a></li>
+                            
                         </ul>
                     </div>
                 </div>
@@ -538,7 +544,7 @@
                 <div class="menu_box">
                     <h3 style="position: relative;background: #11a8ab;"><span style="position: absolute; padding: 15px; left: 0; top:0;"><a class="go-back" href="#"> <img src="images/arrow-left.png" alt=""> </a></span>Be A Stockist</h3>
                     <div class="temp_list">
-                        <ul class="incoming-order">
+                        <ul>
                             <li><a href="#"><span class="day_name">Thank you for your interest. Obe is free to be used as an Agent. But if you are a Stockist, the annual subscription fee is only RM49. Let's start:</span></a></li>
                             <li>
                                 <a href="#"> <span class="day_name">
@@ -558,7 +564,7 @@
                                                 <td>Please transfer/deposit RM49 for annual subscription fee to our account as stated below:<br><br>Account Name: Zulfikri bin Zulkiflee<br>Maybank: 154080214538<br>CIMB: 7025438830<br><br>PS: Note your username with the transaction.</td>
                                             </tr>
                                             <tr><td>&nbsp;</td></tr>
-                                            <tr><td></td><td style="text-align: center"><p id="upload-receipt" style="padding:10px;border:2px solid #1f253d;">Upload Payment Receipt</p></td></tr>
+                                            <tr><td></td><td style="text-align: center"><p class="upload-receipt" style="padding:10px;border:2px solid #1f253d;">Upload Payment Receipt</p></td></tr>
                                         </table>
                                     </span> </a>
                             </li>
@@ -579,6 +585,68 @@
         </div>
     </div>
     <!-- /page -->
+    <!-- Start of renew subscription page -->
+    <div data-role="page" class="main" id="renew-subs" style="padding-top:3%;">
+        <div class="wrap">
+            <div class="column_left">
+                <div class="menu_box">
+                    <h3 style="position: relative;background: #11a8ab;"><span style="position: absolute; padding: 15px; left: 0; top:0;"><a class="go-back" href="#"> <img src="images/arrow-left.png" alt=""> </a></span>Renew Subscription</h3>
+                    <div class="temp_list">
+                        <ul>
+                            <li><a href="#"><span class="day_name">Thank you for your loyalty. As stated before, obe is free to be used as an Agent. But if you are a Stockist, the annual subscription fee is only RM49.</span></a></li>
+                            <li>
+                                <a href="#"> <span class="day_name">
+                                    <table>
+                                        <tr>
+                                            <td style="padding-right: 5px;">1</td>
+                                            <td>Please transfer/deposit RM49 for annual subscription fee to our account as stated below:<br><br>Account Name: Zulfikri bin Zulkiflee<br>Maybank: 154080214538<br>CIMB: 7025438830<br><br>PS: Note your username with the transaction.</td>
+                                        </tr>
+                                        <tr><td>&nbsp;</td></tr>
+                                        <tr><td></td><td style="text-align: center"><p class="upload-receipt" style="padding:10px;border:2px solid #1f253d;">Upload Payment Receipt</p></td></tr>
+                                    </table>
+                                    </span> </a>
+                            </li>
+                            <li>
+                                <a href="#"> <span class="day_name">
+                                    <table>
+                                        <tr>
+                                            <td style="padding-right: 5px;">2</td>
+                                            <td>Expired account will be activated within 24 hours.<br><br>PS: If not, just contact the developer via email at obe@zfikri.tk</td>
+                                        </tr>
+                                    </table>
+                                    </span> </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /page -->
+    <!-- Start of subscription detail page -->
+    <div data-role="page" class="main" id="subs-detail" style="padding-top:3%;">
+        <div class="wrap">
+            <div class="column_left">
+                <div class="menu_box">
+                    <h3 style="position: relative;background: #11a8ab;"><span style="position: absolute; padding: 15px; left: 0; top:0;"><a class="go-back" href="#"> <img src="images/arrow-left.png" alt=""> </a></span>Subscription Detail</h3>
+                    <div class="temp_list">
+                        <ul>
+                            <li><div style="padding: 30px;"><img src="" class="receipt-view" style="width: 100%;border: 3px solid #333;"></div></li>
+                            <li><a href="#"><span class="day_name">obe ID</span><label class="subs_id"></label><div class="clear"></div></a></li>
+                            <li><a href="#"><span class="day_name">User Name</span><label class="subs_name"></label><div class="clear"></div></a></li>
+                            <li><a href="#"><span class="day_name">Current Status</span><label class="current_status"></label><div class="clear"></div></a></li>
+                            <li><a href="#"><span class="day_name">Expired On</span><label class="expired_date"></label><div class="clear"></div></a></li>
+                        </ul>
+                        <div class="signin_facebook">
+                            <p style="width: 50%;float: left; border-right: 2px solid #fff;" class="renew-reject"> <a href="#"><i> <img src="images/arrow-left.png" alt=""></i> Reject</a> </p>
+                            <p style="width: 50%:float: right;" class="renew-accept"> <a href="#">Approve <i> <img src="images/arrow-right.png" alt=""></i></a> </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /page -->
     <!-- Start of setting page -->
     <div data-role="page" class="main" id="setting" style="padding-top:3%;">
         <div class="wrap">
@@ -588,13 +656,14 @@
                     <div class="menu_box_list">
                         <ul>
                             <li><a href="#edit-profile" class="account_settings"><span>Edit Profile</span></a></li>
-                            <li><a href="#account-info" class="events"><span>Account Info<label class="account-status" style=""></label></span></a></li>
+                            <li data-user="stockist"><a href="#account-info" class="events"><span>Account Info<label class="account-status"></label></span></a></li>
                             <li data-user="agent-new"><a href="#be_stockist" class="upgrade"><span>Be A Stockist</span></a></li>
                             <li><a href="#" class="statistics" id="logout-submit"><span>Logout</span></a></li>
                         </ul>
                     </div>
                 </div>
             </div>
+            <span style="position: absolute;bottom: 5px;right: 5px;font-size: 12px;color: darkgray">v1.0.8</span>
         </div>
     </div>
     <!-- /page -->
@@ -606,6 +675,7 @@
                     <h3 style="position: relative;background: #a311ab;"><span style="position: absolute; padding: 15px; left: 0; top:0;"><a href="#setting"> <img src="images/arrow-left.png" alt=""> </a></span>Account Info</h3>
                     <div class="menu_box_list">
                         <ul>
+                            <li><a href="#">Role<span class="account-role" style="float:right;"></span></a></li>
                             <li><a href="#">Account Status<label class="account-status" style=""></label></a></li>
                             <li><a href="#">Expired Date<span class="account-expired" style="float:right;"></span></a></li>
                         </ul>
@@ -620,6 +690,14 @@
         <div id='status'> <img alt='' height='64' src='css/images/ajax-loader.gif' width='64' /> </div>
     </div>
     <!-- end preloader -->
+    <!-- maintenance page -->
+    <div data-role="page" class="main" id="maintenance" style="padding-top:3%;">
+        <div class="wrap">
+            <img src="images/maintenance.png" style="width: 128px;position: absolute;left: 50%;transform: translateX(-50%);top:30%;">
+            <p style="position: absolute;text-align: center;color: #9099b7;top: 55%;width: 100%;">Sorry, we are currently under maintenance.</p>
+        </div>
+    </div>
+    <!-- end aintenance -->
     <!--
     <script type="text/javascript" src="js/obe.min.js"></script>
     <script type="text/javascript" src="cordova.js"></script>
@@ -630,14 +708,14 @@
     <script type="text/javascript" src="js/network.min.js"></script>
     <script type="text/javascript" src="js/user.min.js"></script>
 -->
-    <script type="text/javascript" src="js/obe.js"></script>
     <script type="text/javascript" src="cordova.js"></script>
     <script type="text/javascript" src="js/android-func.js"></script>
+    <script type="text/javascript" src="js/obe.js"></script>
+    <script type="text/javascript" src="js/su-admin.js"></script>
     <script type="text/javascript" src="js/register.js"></script>
     <script type="text/javascript" src="js/login.js"></script>
-    <script type="text/javascript" src="js/su-admin.js"></script>
-    <script type="text/javascript" src="js/order.js"></script>
     <script type="text/javascript" src="js/network.js"></script>
+    <script type="text/javascript" src="js/order.js"></script>
     <script type="text/javascript" src="js/user.js"></script>
 </body>
 

@@ -17,7 +17,6 @@ function onLoad() {
         }
         else {
             //Notification was received in foreground. Maybe the user needs to be notified.
-            location.reload();
             if (data.page == "#incoming-order") {
                 var messageToast = "You received new order";
             }

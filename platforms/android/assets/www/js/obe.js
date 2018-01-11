@@ -1,12 +1,9 @@
 $(document).on('pagechange', function (e, data) {
     var activePage = $.mobile.activePage.attr('id');
-    if(activePage == "show-new"){
-        
-    }
+    if (activePage == "show-new") {}
 });
-
 var local_api = "api/";
-var remote_api = "http://www.zfikri.tk/obe_api/";
+var remote_api = "http://www.obe-apps.tk/obe_api/";
 var api = "";
 
 function getMobileOperatingSystem() {
@@ -27,7 +24,8 @@ function getMobileOperatingSystem() {
 console.log(getMobileOperatingSystem());
 if (getMobileOperatingSystem() == "Android") {
     api = remote_api;
-} else {
+}
+else {
     api = remote_api;
 }
 $('#remove').on('click', function () {
@@ -68,23 +66,21 @@ $('.main').on('pagebeforeshow', function (event, data) {
     var prevPage = data.prevPage.attr('id');
     $('.go-back').attr('href', "#" + prevPage);
 });
-
 $('#add-agent .go-back').bind('click', function () {
     location.reload();
 });
-
 // take picture from camera
 $('.but_take').each(function () {
     $(this).on('click', function () {
         navigator.camera.cleanup();
         navigator.camera.getPicture(onSuccess, onFail, {
-            quality: 20,
-            targetWidth: 900,
-            targetHeight: 900,
-            allowEdit: true,
-            sourceType: Camera.PictureSourceType.CAMERA,
-            destinationType: Camera.DestinationType.FILE_URL,
-            encodingType: Camera.EncodingType.JPEG
+            quality: 20
+            , targetWidth: 900
+            , targetHeight: 900
+            , allowEdit: true
+            , sourceType: Camera.PictureSourceType.CAMERA
+            , destinationType: Camera.DestinationType.FILE_URL
+            , encodingType: Camera.EncodingType.JPEG
         });
     });
 });
@@ -93,27 +89,29 @@ $('.but_select').each(function () {
     $(this).on('click', function () {
         navigator.camera.cleanup();
         navigator.camera.getPicture(onSuccess, onFail, {
-            quality: 50,
-            targetWidth: 900,
-            targetHeight: 900,
-            sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
-            allowEdit: true,
-            destinationType: Camera.DestinationType.FILE_URI,
-            encodingType: Camera.EncodingType.JPEG
+            quality: 50
+            , targetWidth: 900
+            , targetHeight: 900
+            , sourceType: Camera.PictureSourceType.PHOTOLIBRARY
+            , allowEdit: true
+            , destinationType: Camera.DestinationType.FILE_URI
+            , encodingType: Camera.EncodingType.JPEG
         });
     });
 });
 // receipt upload select 
-$('#upload-receipt').on('click', function () {
-    navigator.camera.cleanup();
-    navigator.camera.getPicture(receiptonSuccess, onFail, {
-        quality: 50,
-        targetWidth: 900,
-        targetHeight: 900,
-        sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
-        allowEdit: true,
-        destinationType: Camera.DestinationType.FILE_URI,
-        encodingType: Camera.EncodingType.JPEG
+$('.upload-receipt').each(function () {
+    $(this).on('click', function () {
+        navigator.camera.cleanup();
+        navigator.camera.getPicture(receiptonSuccess, onFail, {
+            quality: 50
+            , targetWidth: 900
+            , targetHeight: 900
+            , sourceType: Camera.PictureSourceType.PHOTOLIBRARY
+            , allowEdit: false
+            , destinationType: Camera.DestinationType.FILE_URI
+            , encodingType: Camera.EncodingType.JPEG
+        });
     });
 });
 // Change image source and upload photo to server
@@ -132,7 +130,7 @@ $('.upload-profile-img').each(function () {
             options.params = params;
             options.chunkedMode = false;
             var ft = new FileTransfer();
-            ft.upload(imageFile, "http://www.zfikri.tk/obe_api/upload.php?obe_id=" + localStorage.getItem('obe_sessionID'), function (result) {
+            ft.upload(imageFile, api + "upload.php?obe_id=" + localStorage.getItem('obe_sessionID'), function (result) {
                 $('.profile-img').attr('src', imageFile + '?' + Math.random());
                 $("#preloader").delay(1000).fadeOut("slow").hide();
                 //                alert('successfully uploaded ' + result.response);
@@ -167,9 +165,9 @@ function receiptonSuccess(imageURI) {
         options.params = params;
         options.chunkedMode = false;
         var ft = new FileTransfer();
-        ft.upload(imageURI, "http://www.zfikri.tk/obe_api/upload-receipt.php?obe_id=" + localStorage.getItem('obe_sessionID'), function (result) {
+        ft.upload(imageURI, api + "upload-receipt.php?obe_id=" + localStorage.getItem('obe_sessionID'), function (result) {
             $("#preloader").delay(1000).fadeOut("slow").hide();
-            localStorage.setItem("obe_paymentMade","true");
+            localStorage.setItem("obe_paymentMade", "true");
             $('#upload-receipt').hide();
             alert("Payment accepted, please wait for our validation.\nThank you.");
             //                alert('successfully uploaded ' + result.response);
@@ -193,24 +191,31 @@ if (localStorage.getItem("obe_sessionROLE") == "Agent") {
     $('[data-user=agent]').show();
     $('[data-user=agent-new]').show();
     $('[data-user=super]').hide();
-} else if (localStorage.getItem("obe_sessionROLE") == "Stockist") {
+}
+else if (localStorage.getItem("obe_sessionROLE") == "Stockist") {
     $('[data-user=agent]').hide();
     $('[data-user=stockist]').show();
     $('[data-user=agent-new]').hide();
     $('[data-user=super]').hide();
-} else {
+}
+else if (localStorage.getItem("obe_sessionROLE") == "Mini Stockist") {
+    $('[data-user=agent]').show();
+    $('[data-user=stockist]').show();
+    $('[data-user=agent-new]').hide();
+    $('[data-user=super]').hide();
+}
+else {
     $('[data-user=stockist]').hide();
     $('[data-user=agent]').hide();
     $('[data-user=agent-new]').show();
     $('[data-user=super]').hide();
 }
-
 if (localStorage.getItem("obe_paymentMade") == "true") {
     $('#upload-receipt').hide();
-}else{
+}
+else {
     $('#upload-receipt').show();
 }
-
 $('.marketing-list').hide();
 $('#show-marketing-only').on('click', function () {
     $('.marketing-list').show();
@@ -220,6 +225,7 @@ $('#show-product-only').on('click', function () {
     $('.marketing-list').hide();
     $('.product-list').show();
 });
-$('.reload-page').on('click',function(){
-    location.reload();
-});
+//$('.reload-page').on('click', function () {
+//    location.reload();
+//});
+

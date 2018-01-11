@@ -838,6 +838,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                 padding: 2em 3em;
                 text-align: center;
                 position: relative;
+                -webkit-box-shadow: inset 0px -125px 155px -4px rgba(0,0,0,0.51);
+                -moz-box-shadow: inset 0px -125px 155px -4px rgba(0,0,0,0.51);
+                box-shadow: inset 0px -125px 155px -4px rgba(0,0,0,0.51);
             }
             
             .profile_picture span {

@@ -1,0 +1,26 @@
+cordova build --release android
+
+This will generate release apk in platforms/android/build/outputs/apk/android-relase-unsigned.apk
+Rename your apk with yourappname.apk & move the file into root folder
+
+Make sure version in config.xml already updated
+
+===============================
+
+keytool -genkey -v -keystore obe.keystore -alias obe -keyalg RSA -keysize 2048 -validity 10000
+
+generate key on 1st publish
+
+===============================
+
+jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore obe.keystore obe.apk obe
+
+sign app
+
+===============================
+
+zipalign -v 4 obe.apk obe_v1_0_3.apk
+
+change name based on version
+
+current version 1.0.8

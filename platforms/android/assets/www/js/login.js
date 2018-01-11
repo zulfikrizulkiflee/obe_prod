@@ -10,8 +10,8 @@ $(function () {
                 console.log(response);
                 $('.profile-name').html(response[0].user_name);
                 if (response[0].user_img != null) {
-                    $('.profile-img').attr('src', "http://www.zfikri.tk/obe_api/upload/" + response[0].user_img);
-                    $('.preview-img').attr('src', "http://www.zfikri.tk/obe_api/upload/" + response[0].user_img);
+                    $('.profile-img').attr('src', api + "upload/" + response[0].user_img);
+                    $('.preview-img').attr('src', api + "upload/" + response[0].user_img);
                 }
                 var acstatus = "New";
                 if(response[0].status != null){
@@ -25,7 +25,17 @@ $(function () {
                     account_date = account_date[2]+"/"+account_date[1]+"/"+account_date[0];
                 }
                 
+                if (acstatus == "Active"){
+                    $('.account-status').attr('style','background:#11a8ab');
+                    $('.expired-stockist').hide();
+                }else if(acstatus == "Expired"){
+                    $('.account-status').attr('style','background:#e64c65');
+                }else{
+                    $('.account-status').attr('style','background:#fcb150');
+                    $('.expired-stockist').hide();
+                }
                 
+                $('.account-role').html(response[0].user_role);
                 $('.account-status').html(acstatus);
                 $('.account-expired').html(account_date);
                 $('.profile-callsign').html(response[0].user_callsign);
@@ -80,8 +90,8 @@ $('#login-submit').on('click', function () {
             localStorage.setItem("obe_sessionSTATUS", response[0].status);
             $('.profile-name').html(response[0].user_name);
             if (response[0].user_img != null) {
-                $('.profile-img').attr('src', "http://www.zfikri.tk/obe_api/upload/" + response[0].user_img);
-                $('.preview-img').attr('src', "http://www.zfikri.tk/obe_api/upload/" + response[0].user_img);
+                $('.profile-img').attr('src', api + "upload/" + response[0].user_img);
+                $('.preview-img').attr('src', api + "upload/" + response[0].user_img);
             }
             $('.profile-callsign').html(response[0].user_callsign)
             $("#preloader").delay(1000).fadeOut("slow").hide();
