@@ -1,0 +1,106 @@
+
+<div data-page="home" class="page">
+  <div class="navbar">
+    <div class="navbar-inner">
+      <div class="center user-callsign"></div>
+      <div class="right"><a href="" class="link icon-only refresh-page"><i class="material-icons"></i></a><a href="notification.html" class="link icon-only"><i class="material-icons">notifications</i><span style="color:#5a5a5a; position: absolute;border-radius: 50%; width: 20px; height: 20px; line-height: 20px; text-align: center; left: 20px;top: 13px; background: #ffc400;" class="badge notification-badge"></span></a>
+      </div>
+    </div>
+  </div>
+  <div class="speed-dial"><a href="#" class="floating-button"><i class="icon icon-plus"></i><i class="icon icon-close"></i></a>
+    <div class="speed-dial-buttons"><a href="#" style="background: #f66c26" class="open-vertical-modal"><i class="material-icons"></i></a><a href="new-order.html" style="background: #ff0707;"><i class="material-icons"></i></a><a href="profile.html" style="background: #ffbe2d;"><i class="material-icons">person</i></a></div>
+  </div>
+  <form id="cari" data-search-list=".search-here" data-search-in=".item-title" class="searchbar searchbar-init">
+    <div class="searchbar-input">
+      <input type="search" placeholder="Search" style="color: white !important;"/><a href="#" onclick="pangkah()" class="searchbar-clear"></a>
+    </div>
+  </form>
+  <div class="toolbar tabbar">
+    <div class="toolbar-inner"><a href="#tab1" class="tab-link active"><i class="icon-tab material-icons"></i><span class="tabbar-label">Home</span></a><a href="#orders" class="tab-link"><i class="icon-tab material-icons">&#xE89B;</i><span class="tabbar-label">Orders</span><span style="color:#5a5a5a;position: absolute;border-radius: 50%;width: 20px;height: 20px;line-height: 20px;text-align: center;left: 50px;top: 3px;background: #ffc400;" class="badge order-badge"> </span></a><a href="#products" class="tab-link"><i class="icon-tab material-icons"></i><span class="tabbar-label">Products</span></a><a href="#tab4" class="tab-link"><i class="icon-tab material-icons"></i><span class="tabbar-label">More</span></a><span style="width: 25%; transform: translate3d(200%, 0px, 0px);" class="tab-link-highlight"></span></div>
+  </div>
+  <div class="tabs-swipeable-wrap swiper-container swiper-container-horizontal swiper-container-android">
+    <div style="transition-duration: 0ms; transform: translate3d(0px, 0px, 0px);" class="tabs swiper-wrapper">
+      <div id="tab1" style="width: 360px;" data-ptr-distance="55" class="page-content pull-to-refresh-content tab swiper-slide swiper-slide-active active">
+        <div style="border-bottom: 5px solid #f2f2f2;margin-bottom:0;" class="content-block page-home">
+          <div class="row no-gutter">
+            <div class="col-100">
+              <p style="color:#333;"><span style="font-size: 18px;">Weekly Statistic</span></p>
+            </div>
+            <div style="position: relative;height: 100%;width:100%" class="chart-container">
+              <canvas id="chart"></canvas>
+            </div>
+            <div class="col-60">
+              <p style="color:#333;"><span style="font-size: 18px;" class="new-order">0</span> Unprocess Order</p>
+            </div>
+            <div class="col-40"><a href="my-sales.html" style="width: fit-content;margin: 10px auto;font-size:12px;" class="button button-raised">View</a></div>
+          </div>
+        </div>
+        <div style="padding:0;height: auto;margin-bottom: 80px;" class="page-content">
+          <!-- This block will be displayed if anything found, and this list block is used a searbar target-->
+          <div style="margin:0" class="list-block list-block-search searchbar-found media-list pending-order-list">
+            <div class="col-100">
+              <p style="color:#333;"><span style="font-size: 18px;">Feeds</span></p>
+            </div>
+            <ul class="feed-list">
+              <li style="height:150px;">
+                <div style="margin-top:20px;" class="col-25"><span style="width:42px; height:42px" class="preloader"></span></div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div id="orders" style="width: 360px;" data-ptr-distance="55" class="page-content pull-to-refresh-content tab swiper-slide swiper-slide-prev">
+        <div style="padding:0" class="content-block top-adjust">
+          <div class="list-block media-list">
+            <ul class="order-list"></ul>
+          </div>
+        </div>
+      </div>
+      <div id="products" style="width: 360px;" data-ptr-distance="55" class="page-content pull-to-refresh-content tab swiper-slide">
+        <div class="content-block top-adjust">
+          <div class="content-block-title brand-title">Brands</div>
+          <article class="brand-cards"></article>
+        </div>
+      </div>
+      <div id="tab4" style="width: 360px;" class="page-content tab swiper-slide">
+        <div class="content-block top-adjust">
+          <div class="content-block-title">Profile</div>
+          <div class="list-block">
+            <ul>
+              <li><a href="profile.html" class="item-link item-content">
+                  <div class="item-media"><i style="color: #ffbe2d;" class="icon material-icons">person</i></div>
+                  <div class="item-inner">
+                    <div class="item-title">Profile Detail</div>
+                  </div></a></li>
+              <li><a href="network.html" class="item-link item-content">
+                  <div class="item-media"><i class="icon material-icons"></i></div>
+                  <div class="item-inner">
+                    <div class="item-title">Networks</div>
+                  </div></a></li>
+              <li><a href="#" class="item-link item-content logout">
+                  <div class="item-media"><i style="color: #f44336;" class="icon material-icons">&#xE8AC;</i></div>
+                  <div style="background-image:none" class="item-inner">
+                    <div class="item-title">Log Out</div>
+                  </div></a></li>
+            </ul>
+          </div>
+          <div class="content-block-title">More</div>
+          <div class="list-block">
+            <ul>
+              <li><a href="#" class="item-link item-content">
+                  <div class="item-media"><i style="color: #ff4141;" class="icon material-icons">favorite</i></div>
+                  <div class="item-inner">
+                    <div class="item-title">Favorite</div>
+                  </div></a></li>
+              <li><a href="#" class="item-link item-content">
+                  <div class="item-media"><i style="color: #335aff;" class="icon material-icons">book</i></div>
+                  <div class="item-inner">
+                    <div class="item-title">Book</div>
+                  </div></a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,56 @@
+
+<div class="views">
+  <div class="view view-main">
+    <div class="pages navbar-through">
+      <div data-page="network" class="page">
+        <div class="navbar">
+          <div class="navbar-inner">
+            <div class="left"><a href="#" class="link icon-only back"><i class="material-icons"></i></a></div>
+            <div class="center hide-on-search">Network</div>
+            <!-- Search Bar-->
+            <form style="background:#f66c26;padding:0 15px 0 0;" class="show-on-search searchbar searchbar-init">
+              <div class="searchbar-input">
+                <input type="search" placeholder="Search User" onkeypress="process(event, this)" style="color:#fff;background-image:none;padding:0;border:none;font-size:20px;" class="user-search"/><a href="#" class="searchbar-clear"></a>
+              </div><a href="#" class="searchbar-cancel">Cancel</a>
+            </form>
+            <div class="right hide-on-search"><a href="#" class="link icon-only search-user"><i class="material-icons">&#xE8B6;</i></a></div>
+          </div>
+        </div>
+        <div style="background:#f2f2f2" class="page-content">
+          <article>
+            <div style="background:#fff" class="search-result">
+              <div style="margin:0" class="list-block list-block-search searchbar-found media-list">
+                <ul style="border-bottom:5px solid #f2f2f2" class="search-result-list"></ul>
+              </div>
+            </div>
+          </article>
+          <article>
+            <div style="top:0;background:#fff;" class="toolbar tabbar">
+              <div class="toolbar-inner"><a href="#following" class="tab-link tab-link-active">Following<span style="color:#5a5a5a; position: absolute;border-radius: 50%; width: 20px; height: 20px; line-height: 20px; text-align: center; right: 20px;top: 13px; background: #ffc400;" class="badge following-badge">0</span></a><a href="#follower" class="tab-link">Followers<span style="color:#5a5a5a; position: absolute;border-radius: 50%; width: 20px; height: 20px; line-height: 20px; text-align: center; right: 20px;top: 13px; background: #ffc400;" class="badge follower-badge">0</span></a></div>
+            </div>
+            <div class="tabs">
+              <div id="following" style="padding-top:0;" class="page-content tab active">
+                <div class="block">
+                  <div style="margin:2px 0;" class="tab-content"> 
+                    <div style="margin:0" class="list-block media-list">
+                      <ul style="border-bottom:5px solid #f2f2f2" class="following-list"></ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div id="follower" style="padding-top:0;" class="page-content tab">
+                <div class="block">
+                  <div style="margin:2px 0;" class="tab-content"> 
+                    <div style="margin:0" class="list-block media-list">
+                      <ul style="border-bottom:5px solid #f2f2f2" class="follower-list"></ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
