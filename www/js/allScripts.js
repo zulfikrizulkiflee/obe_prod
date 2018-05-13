@@ -317,6 +317,10 @@ function product_onSuccess(imageURI) {
     $('.product-image img').attr('src', imageURI + '?' + Math.random());
 }
 
+function product_onFail(message) {
+    //    alert('Failed because: ' + message);
+}
+
 //*******************************************
 //
 //*******************************************
