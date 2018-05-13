@@ -311,10 +311,12 @@ function callAPI(type, section) {
     });
 }
 
+var imageFile;
 function product_onSuccess(imageURI) {
     mainView.router.loadPage('new-product.html');
     // Set image source
     $('.product-image img').attr('src', imageURI + '?' + Math.random());
+    imageFile = imageURI;
 }
 
 function product_onFail(message) {
@@ -1181,7 +1183,7 @@ myApp.onPageInit('new-product', function (page) {
                     variationJSON.push(data);
                 });
 
-                $$.get(api_product + 'addproduct&obe-id=' + localStorage.getItem('OBE_obe_id') + '&' + $('#new-product-form').serialize() + "&product-variant=[" + variationJSON + "]&wholesale=[" + wholesaleJSON + "]&product-image=photo", function (response) {
+                $$.get(api_product + 'addproduct&obe-id=' + localStorage.getItem('OBE_obe_id') + '&' + $('#new-product-form').serialize() + "&product-variant=[" + variationJSON + "]&wholesale=[" + wholesaleJSON + "]", function (response) {
                     var response = extractAJAX(response);
                     if (response.status == true) {
                         var options = new FileUploadOptions();
