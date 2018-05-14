@@ -84,6 +84,7 @@ $$(document).on('click', '.alert-for-pass', function () {
     });
 });
 $$(document).on('click', '#login-btn', function () {
+    console.log(getMobileOperatingSystem());
     myApp.showIndicator();
     if ($$('[name=user_name]').val() == "" || $$('[name=user_password]').val() == "") {
         myModal('Login Error!', 'Empty Username/Password');
@@ -93,7 +94,7 @@ $$(document).on('click', '#login-btn', function () {
     $$('#login-form').trigger('submit');
     var formData = myApp.formToJSON('#login-form');
     myApp.showIndicator();
-    $$.get(api_user + 'login', $$.serializeObject(formData), function (response) {
+    $$.get(api_user + 'login' + '&platform=' + getMobileOperatingSystem(), $$.serializeObject(formData), function (response) {
         var response = extractAJAX(response);
         if (response.status == true) {
             Object.keys(response.data[0]).forEach(function (key) {
@@ -200,6 +201,23 @@ $$(document).on('pageInit', function (e) {
 //
 //*******************************************
 //FUNCTIONS
+function getMobileOperatingSystem() {
+    var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+    // Windows Phone must come first because its UA also contains "Android"
+    if (/windows phone/i.test(userAgent)) {
+        return "Windows Phone";
+    }
+    if (/android/i.test(userAgent)) {
+        return "Android";
+    }
+    // iOS detection from: http://stackoverflow.com/a/9039885/177710
+    if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+        return "iOS";
+    }
+    return "unknown";
+}
+// console.log(getMobileOperatingSystem());
+
 function gotPic(event) {
     if (event.target.files.length === 1 && event.target.files[0].type.indexOf('img/') === 0) {
         $$('#avatar').attr('src', URL.createObjectURL(event.target.files[0]));
@@ -315,7 +333,6 @@ var imageFile;
 function product_onSuccess(imageURI) {
     mainView.router.loadPage('new-product.html');
     // Set image source
-    $('.product-image img').attr('src', imageURI + '?' + Math.random());
     imageFile = imageURI;
 }
 
@@ -491,24 +508,6 @@ myApp.onPageInit('home', function (page) {
     , ];
         myApp.actions(buttons);
     });
-
-    function getMobileOperatingSystem() {
-        var userAgent = navigator.userAgent || navigator.vendor || window.opera;
-        // Windows Phone must come first because its UA also contains "Android"
-        if (/windows phone/i.test(userAgent)) {
-            return "Windows Phone";
-        }
-        if (/android/i.test(userAgent)) {
-            return "Android";
-        }
-        // iOS detection from: http://stackoverflow.com/a/9039885/177710
-        if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
-            return "iOS";
-        }
-        return "unknown";
-    }
-    console.log(getMobileOperatingSystem());
-    
 
     $$('.open-vertical-modal').on('click', function () {
         myApp.modal({
@@ -1125,6 +1124,7 @@ function followUser(obe_id){
 var indVar = 1;
 var wholesaleJSON = [];
 myApp.onPageInit('new-product', function (page) {
+    $('.product-image img').attr('src', imageFile + '?' + Math.random());
     if (page.query.brand_name) {
         $$('.brand-name').html(page.query.brand_name);
         $('input[name=brand-id]').val(page.query.brand_id)
@@ -1196,8 +1196,8 @@ myApp.onPageInit('new-product', function (page) {
                         options.params = params;
                         options.chunkedMode = false;
                         var ft = new FileTransfer();
-                        ft.upload(imageFile, api_upload + "product&action=new&id=" + response.id, function (result) {
-                            myApp.confirm('Add another product ?', response.data, function () {
+                        ft.upload(imageFile, api_upload + "product&action=new&id=" + response.data, function (result) {
+                            myApp.confirm('Add another product ?', 'Product Added', function () {
                                 mainView.router.reloadPage('new-product.html'); 
                             }, function () {
                                 mainView.router.loadPage('home.html');
